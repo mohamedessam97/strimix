@@ -1,0 +1,11 @@
+body {
+  background-image: url("../src/assets/2022.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  /* font-family: "Montserrat", sans-serif;
+  font-family: "Playfair Display", serif; */
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}

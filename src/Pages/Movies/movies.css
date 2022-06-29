@@ -1,0 +1,25 @@
+.category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.category span{
+  font-size: 34px;
+  font-weight: 600;
+
+}
+
+.category select {
+  cursor: pointer;
+  background-color:  #0A0D18;
+  border: 1px solid white;
+  color: white;
+  margin-left: 20px;
+  padding: 5px;
+}
