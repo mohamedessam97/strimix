@@ -53,16 +53,16 @@ const App = () => {
     // const user =localStorage.getItem("user")
 
     const authenticationData = localStorage.getItem('Authentication') !== 'undefined' ? JSON.parse(localStorage.getItem('Authentication')) : '';
-    const authData =
-      localStorage.getItem("userdata") !== 'undefined' ? JSON.parse(localStorage.getItem("userdata")): "";
+    const authData =  localStorage.getItem('userData')  !== 'undefined' ? JSON.parse(localStorage.getItem('userData')): "";
+      console.log( authData)
     if (token) {
       Dispatch(AuthenticationSliceActions.logIn({ token }));
       Dispatch(
         AuthenticationSliceActions.SetUserData({
-          FirstName: authData.FirstName? authData.FirstName : '',
-          LastName: authData.LastName ? authData.LastName : '',
-          CardNumber: authData.cardNumber ? authData.cardNumber : '',
-          phoneNumber: authData.PhoneNumber? authData.PhoneNumber: '',
+          FirstName: authData !== '' && authData !== null? authData.FirstName : '',
+          LastName: authData !== ''  && authData !== null ? authData.LastName : '',
+          CardNumber:  authData !== ''  && authData !== null ? authData.cardNumber : '',
+          phoneNumber:  authData !== ''  && authData !== null? authData.PhoneNumber: '',
         })
         );
         Dispatch(AuthenticationSliceActions.SignUp({Email:authenticationData.email , Password: authenticationData.password}))

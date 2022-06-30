@@ -4,7 +4,7 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import LargeButton from "../Components/UI/LargeButton";
 import imglink from "../assets/devices.png";
-
+import bg from '../assets/2022.png';
 
 
 const ImageContainer = styled(Box)(({ theme }) => ({
@@ -28,6 +28,7 @@ const TextContainer = styled(Box)(({ theme }) => ({
 
 const Setup = () => {
   return (
+    <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
 
     <Container
       maxWidth='xs'
@@ -61,7 +62,7 @@ const Setup = () => {
         <LargeButton link="/register" text="Next" />
       </Stack>
     </Container>
-
+              </Box>
   );
 };
 

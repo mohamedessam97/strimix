@@ -11,7 +11,7 @@ const Images = styled("img")({
 
 const CompatableSection = () => {
   return (
-    <Box  component='div'  sx={{ fontFamily:'poppins' ,  color: "white", height: "100vh"  , maxwidth:'100%' , backgroundImage: 'linear-gradient(to left,rgba(10, 13, 24, 0.9) 40.88%,rgba(10, 13, 24, 0.6) 84.09%, rgba(10, 13, 24, 0.8) 99.57%)'  }}>
+    <Box  component='div'  sx={{ fontFamily:'poppins' ,  color: "white", height: "100vh"  , maxwidth:'100%' , backgroundImage: 'linear-gradient(to left,rgba(10, 13, 24, 0.9) 40.88%,rgba(10, 13, 24, 0.6) 84.09%, rgba(10, 13, 24, 0.8) 99.57%) !important'  }}>
     <Stack direction='row' justifyContent="space-around" alignItems='center' flexWrap='wrap' sx={{width:'100%' , height:'100%' }} >
         {/* left side */}
     <Box component='div' sx={{ width:{xl:"50%" , lg:'50%' , md:'50%' , sm:'100%' , xs:'100%'} , height:{xl:"80%" , lg:'80%' , md:'80%' , sm:'50%' , xs:'50%'} , position:'relative' }}>

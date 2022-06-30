@@ -28,7 +28,7 @@ const NavBar = () => {
     <Box
       variant="header"
       sx={{
-        height: "5rem",
+        height: "4rem",
         marginLeft: "auto",
         marginRight: "auto",
         background: "transparent",
@@ -40,7 +40,8 @@ const NavBar = () => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        sx={{ height: "100%" }}
+        
+        sx={{ height: "100%"  }}
       >
         <Box variant="div" sx={{ width: "100%", height: "100%" }}>
           <Stack
