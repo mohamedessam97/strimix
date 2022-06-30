@@ -1,7 +1,8 @@
-import { Container , Stack, Typography } from '@mui/material';
+import { Box, Container , Stack, Typography } from '@mui/material';
 import LoginForm from '../Components/LoginForm';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import bg from '../assets/2022.png';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -15,9 +16,10 @@ const StyledLink = styled(Link)`
 `;
 const Login = () => {
     return (
+      <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
         <Container
         maxWidth="sm"
-        sx={{ height: "80vh", boxSizing: "border-box", paddingTop: "5rem" , textAlign:'center  ' ,  backgroundColor:'rgba(7, 9, 17, 0.7)', paddingBottom:'2rem', marginBottom:'3rem'}}>
+        sx={{ height: "80vh", boxSizing: "border-box", paddingTop: "5rem" , textAlign:'center  ' ,  backgroundColor:'rgba(7, 9, 17, 0.7)', paddingBottom:'3rem'}}>
             
             <Stack justifyContent='space-around' alignItems='center' alignContent='flex-start'  gap={2} sx={{maxWidth:'450px' , marginLeft:'2rem' , color:'#FFFFFF'}}>
             <Typography variant='h4' sx={{  fontWeight:'bold' , textAlign:'left'}}>Sign In</Typography>
@@ -29,6 +31,7 @@ const Login = () => {
             </Stack>
            
         </Container>
+        </Box>
     );
 };
 

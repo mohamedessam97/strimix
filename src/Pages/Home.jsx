@@ -5,10 +5,12 @@ import CompatableSection from "../Components/CompatableSection";
 import ImageContainer from "../Components/ImageContainer";
 import KidsSection from "../Components/KidsSection";
 import WatchNow from "../Components/WatchNow";
+import bg from '../assets/2022.png';
+
 
 const Home = () => {
   return (
-    <Box component="section" sx={{ marginTop: "2rem" }}>
+    <Box component="section" sx={{ paddingTop: "2rem" , backgroundImage:`url(${bg})` , backgroundSize:'contain' , backgroundRepeat:'no-repeat'}}>
       <Header />
       <CompatableSection />
       <ImageContainer />

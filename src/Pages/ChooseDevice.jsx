@@ -12,7 +12,7 @@ import { useState } from "react";
 import AuthenticationSliceActions from "../Redux/AuthenticationSlice";
 import LoadingButton from '@mui/lab/LoadingButton';
 import styled from "@emotion/styled";
-
+import bg from '../assets/2022.png';
 
 
 const LargeButton = styled(LoadingButton)(({ theme }) => ({
@@ -76,6 +76,8 @@ const Navigate = useNavigate()
 
 
   return (
+    <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
+
     <Container
       maxWidth="lg"
       sx={{
@@ -189,6 +191,7 @@ const Navigate = useNavigate()
 
         
     </Container>
+    </Box>
   );
 };
 
