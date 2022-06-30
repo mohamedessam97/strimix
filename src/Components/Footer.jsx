@@ -12,7 +12,7 @@ const CustomTypography = styled(Typography)(({Theme}) => ({
 
 const Footer = () => {
     return (
-         <Box sx={{color:'rgba(117, 117, 117, 1);' , paddingTop:'2rem' , height:'40vh' , borderTop:'8px solid #222222' , }}>
+         <Box sx={{color:'rgba(117, 117, 117, 1);' , paddingTop:'2rem' , height:'300px' , borderTop:'8px solid #222222' , backgroundColor:'#0A0D18' }}>
             <Stack direction='row' justifyContent='space-evenly' alignItems='center' gap={3} flexWrap='wrap'>
                 {/* first stack of links */}
             <Stack justifyContent='space-around' gap={1}>

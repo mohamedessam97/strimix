@@ -49,20 +49,20 @@ const App = () => {
 
   useEffect(() => {
   
-    const token = JSON.parse(localStorage.getItem("token"))
-    const user =localStorage.getItem("user")
+    const token = localStorage.getItem('token') !== 'undefined' ? JSON.parse(localStorage.getItem("token")) : ''
+    // const user =localStorage.getItem("user")
 
-    const authenticationData = localStorage.getItem('Authentication') ? JSON.parse(localStorage.getItem('Authentication')) : '';
-    const { FirstName, LastName, PhoneNumber, cardNumber } =
-      localStorage.getItem("userdata") ? JSON.parse(localStorage.getItem("userdata")): "";
+    const authenticationData = localStorage.getItem('Authentication') !== 'undefined' ? JSON.parse(localStorage.getItem('Authentication')) : '';
+    const authData =
+      localStorage.getItem("userdata") !== 'undefined' ? JSON.parse(localStorage.getItem("userdata")): "";
     if (token) {
       Dispatch(AuthenticationSliceActions.logIn({ token }));
       Dispatch(
         AuthenticationSliceActions.SetUserData({
-          FirstName: FirstName,
-          LastName: LastName,
-          CardNumber: cardNumber,
-          phoneNumber: PhoneNumber,
+          FirstName: authData.FirstName? authData.FirstName : '',
+          LastName: authData.LastName ? authData.LastName : '',
+          CardNumber: authData.cardNumber ? authData.cardNumber : '',
+          phoneNumber: authData.PhoneNumber? authData.PhoneNumber: '',
         })
         );
         Dispatch(AuthenticationSliceActions.SignUp({Email:authenticationData.email , Password: authenticationData.password}))
@@ -92,7 +92,7 @@ const App = () => {
               <Route path="/plan" element={<Plans />} />
               <Route path="/Chooseplan" element={<ChoosePlan />} />
               <Route path="/payment" element={<Payment />} />
-              <Route path="/creditCard" element={<CreditCard />} />
+              {/* <Route path="/creditCard" element={<CreditCard />} /> */}
               <Route path="/choosedevice" element={<Choosedevice />} />
 
               <Route path="/NewProfile" element={<NewProfile />} />

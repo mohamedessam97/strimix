@@ -15,6 +15,7 @@ const BasicForm = () => {
     
     const submitonHandler = () => {
         if(EmailIsValid){
+            localStorage.setItem('initialEmail' , formik.values.Email)
             Dispatch(AuthenticationSliceActions.SignUp({Email : formik.values.Email}));
             Navigate('/setup');
         }      

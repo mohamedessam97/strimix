@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { IsloggedIn: false, Email: "", Password: "", token: "" , FirstName:"" , LastName:"" , CardNumber:"" , phoneNumber:'' , userPlan: '' , planChosen: false , error : '' , isLoading :false , planRequestError : false , userDevice : '' , movies:[]};
+const initialState = { IsloggedIn: false, Email: localStorage.getItem('initialEmail') !== 'undifined' ? localStorage.getItem('initialEmail') : "", Password: "", token: "" , FirstName:"" , LastName:"" , CardNumber:"" , phoneNumber:'' , userPlan: '' , planChosen: false , error : '' , isLoading :false , planRequestError : false , userDevice : '' , movies:[]};
 
  export const AuthenticationSlice = createSlice({
   name: "authentication",

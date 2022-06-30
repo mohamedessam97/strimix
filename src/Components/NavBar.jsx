@@ -51,7 +51,7 @@ const NavBar = () => {
               width: "100%",
               fontWeight: "bold",
               height: "100%",
-              paddingLeft: "3rem",
+              paddingLeft: { lg:'3rem' , md:'3rem' , xs:'0px'},
               color: "red",
             }}
           >
@@ -80,7 +80,7 @@ const NavBar = () => {
             alignItems="center"
             sx={{
               height: "100%",
-              paddingRight: "3rem",
+              paddingRight:  { lg:'3rem' , md:'3rem' , xs:'0px'},
               textDecoration: "none !important",
             }}
           >

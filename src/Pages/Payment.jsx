@@ -1,8 +1,9 @@
 import { Box, Container } from "@mui/system";
 import { Stack, Typography } from "@mui/material";
 // import LargeButton from "../Components/UI/LargeButton";
-import LinkButton from "../Components/UI/LinkButton";
+import PaymentButton from "../Components/UI/PaymentButton";
 import imgageLink from '../assets/Group.png';
+import LinkButton from "../Components/UI/LinkButton";
 const Payment = () => {
     return (
         <Container
@@ -28,9 +29,11 @@ const Payment = () => {
 
             <Box sx={{marginTop:'2rem'}}>
             {/* <LargeButton link='/' text='Next'  /> */}
+            <PaymentButton />
             <LinkButton />
             </Box>
             
+
       </Stack>
     </Container>
     );
