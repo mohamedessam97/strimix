@@ -25,10 +25,14 @@ import React from 'react'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
+import { useEffect } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 const SmapleNextArrow = (props) => {
     const {onClick} = props;
+
     return (
         <div className="control-btn" onClick={onClick}>
             <button className='next'>
@@ -50,11 +54,23 @@ const SmaplePrevArrow = (props) => {
 }
 
 const List = ({list}) => {
+    // var viewport_width = document.documentElement.clientWidth;
+    const matches = useMediaQuery('(min-width:1278px)');
+    var viewport_width = window.innerWidth;
+    let count = 4
+
+useEffect(()=>{
+    if(viewport_width<1278){
+        count=3
+    }else{  
+        count=4
+    }
+},[viewport_width])
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: !matches?3:4,
         slidesToScroll: 1,
         nextArrow: <SmapleNextArrow />,
         prevArrow: <SmaplePrevArrow />,
@@ -75,9 +91,10 @@ const List = ({list}) => {
                         <div className='heading flexSB'>
                             <h1>{list.title}</h1>
                         </div>
-                        <div className='content'>
+                        <div className='content' style={{height:"250px"}} >
                             <Slider {...settings}>
                             {/* <ListItem index={0}/><ListItem index={0}/><ListItem index={0}/><ListItem index={0}/><ListItem index={0}/><ListItem index={0}/> */}
+                                
                                 {list.MovieId.map((movie)=>(
                                     <ListItem key={movie._id} item={movie}/>
                                     
