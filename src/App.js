@@ -49,13 +49,13 @@ const App = () => {
 
   useEffect(() => {
   
-    const token = localStorage.getItem('token') !== 'undefined' ? JSON.parse(localStorage.getItem("token")) : ''
+    const token = localStorage.getItem('token') !== 'undefined' &&  localStorage.getItem('token') !== null ? JSON.parse(localStorage.getItem("token")) : ''
     // const user =localStorage.getItem("user")
 
-    const authenticationData = localStorage.getItem('Authentication') !== 'undefined' ? JSON.parse(localStorage.getItem('Authentication')) : '';
+    const authenticationData = localStorage.getItem('Authentication') !== 'undefined'&&  localStorage.getItem('Authentication') !== null  ? JSON.parse(localStorage.getItem('Authentication')) : '';
     const authData =  localStorage.getItem('userData')  !== 'undefined' ? JSON.parse(localStorage.getItem('userData')): "";
       console.log( authData)
-    if (token) {
+    if (token !== '' && token !== null) {
       Dispatch(AuthenticationSliceActions.logIn({ token }));
       Dispatch(
         AuthenticationSliceActions.SetUserData({
