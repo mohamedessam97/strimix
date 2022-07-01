@@ -198,7 +198,7 @@ const RegisterForm = ({ classes }) => {
   
 
       {requestError  && (
-        <Typography component="p" color='#f50057' sx={{color:'white'}}>{requestError}</Typography>
+        <Typography component="p" color='#f50057' >{requestError}</Typography>
       )}
     </Box>
   );

@@ -61,11 +61,11 @@ const LoginForm = () => {
   const Navigate = useNavigate()
   const isLoading = useSelector((state) => state.isLoading );
   const requestError = useSelector((state) => state.error);
+  console.log(requestError , 'component888')
+  // useEffect(() => {
+  //   Dispatch(AuthenticationSliceActions.setError(''))
 
-  useEffect(() => {
-    Dispatch(AuthenticationSliceActions.setError(''))
-
-  } , [])
+  // } , [])
 
   const submitonHandler = (event) => {
     event.preventDefault();
@@ -184,7 +184,7 @@ const LoginForm = () => {
 
 
         {requestError  && (
-        <Typography component="p" textAlign='center' color='#f50057' sx={{color:'white' , width:'100%'}}>{requestError}</Typography>
+        <Typography component="p" textAlign='center' color='#f50057' sx={{ width:'100%'}}>{requestError}</Typography>
       )}
 
     </Box>

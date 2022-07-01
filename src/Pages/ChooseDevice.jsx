@@ -38,7 +38,7 @@ const ChooseDevice = () => {
   const [laptopchosen , setlaptopChosen] = useState(false)
   const  Dispatch = useDispatch()
   const isLoading = useSelector( (state) => state.isLoading )
-  const requestError = useSelector( (state) => state.error )
+  const requestError = useSelector( (state) => state.userDeviceError )
   const userDevice = useSelector( (state) => state.userDevice )
 const Navigate = useNavigate()
   const tvDeviceHandler = () => {
