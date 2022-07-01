@@ -104,7 +104,7 @@ p{
   border-left: 5px solid rgb(18,198,178);
   transform:scale3d(1.1, 1.1, 1) translate3d(6%, 0, 0) perspective(31.25em);
   box-shadow: 0 0 0.73em rgba(0, 0, 0, 0.9);
-  z-index: 99;
+  z-index: 999;
 }
 
 
@@ -125,7 +125,7 @@ p{
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: -10;
   height: 100%;
   width: 100%;
   object-fit: cover;

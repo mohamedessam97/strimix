@@ -45,7 +45,7 @@ const HomeA = () => {
                     {Movies.map(movie => {
                         const delet =false
                         return (
-                            <Grid item xs={3} sx={{ mb: "20px" ,zIndex: 'tooltip'}} >
+                            <Grid item xs={3} sx={{ mb: "20px" ,zIndex: 'tooltip' ,height:"250px" }} >
                                 <Item key={movie._id} item={[movie , delet]} />
                             </Grid>
                         )

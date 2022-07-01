@@ -71,7 +71,7 @@ const Movies = () => {
                 {movies && <Grid container spacing={0}>
                     {movies.map(movie => {
                         return (
-                            <Grid item xs={3} sx={{ mb: "20px" }}>
+                            <Grid item xs={3} sx={{ mb: "20px" ,height:"250px" }}>
                                 <Item key={movie._id} item={[movie , delet]} />
                             </Grid>
                         )
