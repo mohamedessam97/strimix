@@ -30,7 +30,7 @@ export const UserRegisterHandler = (userData) => {
         }).catch((err) => {
             console.log(err)
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
-            Dispatch(AuthenticationSliceActions.setError(err.response.data? err.response.data : 'Something went wrong' )) })
+            Dispatch(AuthenticationSliceActions.setError(err.response.data.message? err.response.data.message : 'Something went wrong' )) })
      }
 }
 
@@ -53,7 +53,7 @@ export const choosePlan = (userData) => {
         Dispatch(AuthenticationSliceActions.setPlanError(true))   
         Dispatch(AuthenticationSliceActions.setIsLoading(false)) 
 
-        Dispatch(AuthenticationSliceActions.setError( error.response.data?  error.response.data :  'Something went wrong'))})
+        Dispatch(AuthenticationSliceActions.setError( error.response.data.message?  error.response.data.message :  'Something went wrong'))})
     }
 }
 
@@ -74,7 +74,7 @@ export const UserLoginHandler = ({userName , Password , Navigate} ) => {
             Navigate('/')
         }).catch((error) => {
             Dispatch(AuthenticationSliceActions.setPlanError(true))    
-            Dispatch(AuthenticationSliceActions.setError( error.response.data?  error.response.data :  'Something went wrong'))
+            Dispatch(AuthenticationSliceActions.setError( error.response.data.message?  error.response.data.message :  'Something went wrong'))
             Dispatch(AuthenticationSliceActions.setIsLoading(false))})
         
     }
@@ -104,7 +104,7 @@ export const creditCardHandler = (userData) => {
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
             userData.Navigate('/choosedevice')} )
         .catch((error) => {   
-            Dispatch(AuthenticationSliceActions.setError( error.response.data?  error.response.data :  'Something went wrong'))
+            Dispatch(AuthenticationSliceActions.setError( error.response.data.message?  error.response.data.message :  'Something went wrong'))
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
         })
     }
@@ -133,7 +133,7 @@ export const setUserDevice = (userDevice) => {
          console.log(error.data.message)
          console.log(error.response.data.message)
          console.log(error.data.message)
-         Dispatch(AuthenticationSliceActions.setUserDeviceError( error.response.data?  error.response.data :  'Something went wrong'));
+         Dispatch(AuthenticationSliceActions.setUserDeviceError( error.response.data.message?  error.response.data.message :  'Something went wrong'));
         })
     }
 }
