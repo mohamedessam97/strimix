@@ -38,24 +38,15 @@ const EditProfile=lazy(()=>import('./Components/Users/EditProfile'))
 const User=lazy(()=>import('./Components/Users/User'))
 
 const App = () => {
-  // const device =JSON.parse(localStorage.getItem("user")).device
-  var sUsrAg = navigator.userAgent;
-  useEffect(() => {
-    // if(sUsrAg.includes("Windows") && !device.includes("Laptop") ){
-      // navigate("/account", { replace: true });
-    // }
-  }, []);
+
   const Dispatch = useDispatch();
   const isLoggedIn =useSelector((state)=>state.IsloggedIn)
 
   useEffect(() => {
   
     const token = localStorage.getItem('token') !== 'undefined' &&  localStorage.getItem('token') !== null ? JSON.parse(localStorage.getItem("token")) : ''
-    // const user =localStorage.getItem("user")
-
     const authenticationData = localStorage.getItem('Authentication') !== 'undefined'&&  localStorage.getItem('Authentication') !== null  ? JSON.parse(localStorage.getItem('Authentication')) : '';
     const authData =  localStorage.getItem('userData')  !== 'undefined' ? JSON.parse(localStorage.getItem('userData')): "";
-      console.log( authData)
     if (token !== '' && token !== null) {
       Dispatch(AuthenticationSliceActions.logIn({ token }));
       Dispatch(

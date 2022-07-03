@@ -109,27 +109,11 @@ const Navbar = () => {
     const handleChange=  (e) =>{
         let q = e.target.value
         if(q==""){
-            console.log("here");
             window.location.assign("/Home")
         }else{
 
             navigate(`/Search/${q}`);       
         }
-        
-//         setTimeout(async ()=>{
-//             try{
-
-//                 const res = await axios.post(`http://localhost:3001/movie/search` , {q})
-//                 console.log(res.data);
-//                 Dispatch(AuthenticationSliceActions.AddMovie(res.data))
-//             }catch(err){
-//                 console.log(err);
-//             }
-// //   
-// //     })
-        
-
-//         },1000)
     }
 
     const token =localStorage.getItem('token')
