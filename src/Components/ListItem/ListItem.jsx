@@ -18,13 +18,11 @@ const ListItem = ( props ) => {
      
   }, [item]);
   const handleClick = async (id)=>{
-    console.log("here");
     const res = await axios.put("http://localhost:3001/user/fav", {Fav:id} , {
         headers:{
             authorization:JSON.parse(token)
         }
     })
-    console.log(res);
   }  
 
   const handleDelete =async (id)=>{
@@ -60,7 +58,7 @@ const ListItem = ( props ) => {
                         <br/>
                     </div>
                     <Link to={`/watch/${movie._id}`}>
-                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
+                        <button className="listitem" style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
                             <i className="fa fa-play"></i> PLAY NOW
                         </button>
                     </Link>

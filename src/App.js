@@ -18,6 +18,7 @@ const Home = lazy(() => import("./Pages/Home"));
 const HomeA =lazy(()=>import("./Pages/home/HomeA"))
 const Movies =lazy(()=>import("./Pages/Movies/Movies"))
 const MyList =lazy(()=>import('./Pages/myList/MyList'))
+const Search =lazy(()=>import('./Pages/Search/Search'))
 const Account =lazy(()=>import('./Pages/account/Account'))
 const Watched = lazy(()=>import('./Pages/watchNow/WatchNow'))
 const Watch =lazy(()=>import("./Pages/movie/Movie"))
@@ -79,12 +80,13 @@ const App = () => {
             <Routes>
               
               <Route path="/" element={!isLoggedIn?<Home />:<Navigate to="/home" replace={true} />} />
-              <Route path="/home" element={isLoggedIn?<HomeA /> :<NotFound />} />
-              <Route path="/Movies" element={isLoggedIn?<Movies />:<NotFound />} />
-              <Route path="/My%20List" element={isLoggedIn?<MyList />:<NotFound />} />
-              <Route path="/Watched" element={isLoggedIn?<Watched />:<NotFound />} />
-              <Route path="/watch/:id" element={isLoggedIn?<Watch />:<NotFound />} />
-              <Route path="/account" element={isLoggedIn?<Account />:<NotFound />} />
+              <Route path="/home" element={isLoggedIn?<HomeA /> :<Home />} />
+              <Route path="/Movies" element={isLoggedIn?<Movies />:<Login />} />
+              <Route path="/My%20List" element={isLoggedIn?<MyList />:<Login />} />
+              <Route path="/Watched" element={isLoggedIn?<Watched />:<Login />} />
+              <Route path="/watch/:id" element={isLoggedIn?<Watch />:<Login />} />
+              <Route path="/Search/:q" element={isLoggedIn?<Search />:<Login />} />
+              <Route path="/account" element={isLoggedIn?<Account />:<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/setup" element={<Setup />} />
