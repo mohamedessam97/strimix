@@ -23,7 +23,7 @@ const WatchList = () => {
     console.log(movies);
     return (
         <div>
-            <Container maxWidth="xl" sx={{ mt: "150px" }}>
+            <Container maxWidth="xl" sx={{ mt: "150px" ,  mb:"200px" }}>
                 {movies && <Grid container spacing={0}>
                     {movies.map(movie => {
                         return (

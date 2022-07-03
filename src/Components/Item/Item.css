@@ -1,0 +1,43 @@
+
+.MovieBox:hover .item{
+  display: inline-block;
+  margin-right: 10px;
+  top: -40px;
+}
+
+@media only screen and (max-width: 425px) {
+  .MovieBox {
+    width: 250px;
+    height: 180px;
+    margin-left: 20px;
+  }
+
+.upcome .title{
+  font-size: 1rem;
+  margin-left: 50px;
+}
+
+.MovieBox .text{
+  top: 0px;
+}
+
+.MovieBox:hover {
+  left: -20px;
+  width: 260px;
+  height: 180px;
+}
+
+.MovieBox:hover .text {
+  top: -20px;
+}
+.MovieBox:hover .delete {
+  top: -225px;
+  left: 276px;
+}
+.MovieBox:hover .item {
+  top: -100px;
+}
+.MovieBox:hover .icon {
+  top: -100px;
+}
+} 

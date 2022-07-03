@@ -108,3 +108,36 @@
     left: 350px;
 
 }
+@media only screen and (max-width: 425px) {
+  .MovieBox {
+    width: 250px;
+    height: 180px;
+    margin-left: 20px;
+  }
+
+.upcome .title{
+  font-size: 1rem;
+  margin-left: 50px;
+}
+
+.MovieBox .text{
+  top: 0px;
+}
+
+.MovieBox:hover {
+  left: -20px;
+  width: 340px;
+  height: 180px;
+}
+
+.MovieBox:hover .text {
+  top: -20px;
+}
+.MovieBox:hover .delete {
+  top: -225px;
+  left: 276px;
+}
+.MovieBox:hover .listItem {
+  top: -100px;
+}
+} 

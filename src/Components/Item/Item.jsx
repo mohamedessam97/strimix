@@ -4,9 +4,8 @@ import { useState  , useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import './ListItem.css'
+import './Item.css'
 
 const Item = ( props ) => {
     const delet = props.item[1]
@@ -35,7 +34,6 @@ const Item = ( props ) => {
     })
     console.log(res);
     setmovie(null)
-    // movie.filter((item) => item._id !== id)   
   }
   const handleWatch = async (id)=>{
     const res = await axios.put("http://localhost:3001/user/watched", {watched:id} , {
@@ -71,11 +69,12 @@ const Item = ( props ) => {
 
                     </button>}
                     <Link to={`/watch/${movie._id}`}>
-                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
+                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)} className="item">
                             <i className="fa fa-play"></i> PLAY NOW
                         </button>
                     </Link>
                     <button
+                    className='icon'
                     onClick={()=>handleClick(movie._id)}
                     ><FavoriteBorderIcon size="large"/></button>
             </div>}

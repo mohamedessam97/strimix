@@ -53,8 +53,6 @@ export default function Account() {
         ,
         marginTop: "80px",
         color: "#FFFFFF",
-        // backgroundImage:
-          // "linear-gradient(to bottom, rgba(7, 9, 17, 0.9) 4.88%, rgba(7, 9, 17, 0.6) 34.09%, rgba(7, 9, 17, 0.5) 99.57%)",
         paddingBottom: '3rem',
         marginBottom: '2rem'
       }}>

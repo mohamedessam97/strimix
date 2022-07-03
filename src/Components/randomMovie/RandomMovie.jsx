@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import InfoIcon from '@mui/icons-material/Info';
 import { Link } from "react-router-dom";
 import './RandomMovie.css'
 const RandomMovie = (props) => {
@@ -10,10 +9,10 @@ const RandomMovie = (props) => {
     const [time, setTime] = useState(true);
     setTimeout(() => {
         setTime(false)
-        
+
     }, 10000)
     return (
-        <div >
+        <div className='cont'>
             {time && (<>
                 <img className='cover' src={movie.img} />
             </>)}
@@ -25,13 +24,11 @@ const RandomMovie = (props) => {
                 <span>{movie.desc}</span>
                 <div className='buttons'>
                     <Link to={`/watch/${id}`}>
-                <Button variant="outlined" startIcon={<PlayArrowIcon sx={{color:'black'}} style={{fontSize:'30px'}}/>}  className='btn' sx={{mr:1}}>
+                <Button variant="outlined" startIcon={<PlayArrowIcon sx={{color:'black'}} style={{fontSize:{xs:'15px' , md:"30px"}}}/>}  className='btn' sx={{mr:1}}>
                     Play
                 </Button>
                     </Link>
-                <Button variant="outlined" startIcon={<InfoIcon sx={{color:'white'}} style={{fontSize:'30px'}}/> } className='btn2'>
-                    More Info
-                </Button>
+
                 </div>
 
             </div>

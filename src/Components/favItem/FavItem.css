@@ -1,94 +1,4 @@
-.listItem {
-  width: 225px;
-  height: 120px;
-  background-color: #141414;
-  /* margin-right: 5px; */
-  overflow: hidden;
-  cursor: pointer;
-  color: white;
-  /* margin-left: 20px; */
-  /* padding-bottom:10px ; */
-}
-.listItem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-.listItem video {
-  width: 100%;
-  height: 144px;
-  object-fit: cover;
-  margin-bottom: 10px;
-  
-}
-
-.listItem:hover {
-  /* background-color: black; */
-  width: 325px;
-  height: 250px;
-  /* position: relative;
-  top: -150px; */
-  -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-  box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-  border-radius: 5px;
-}
-.listItem:hover img {
-  height: 140px;
-}
-.listItem:hover video {
-  height: 100px;
-}
-
-.listItem:hover .itemInfo {
-    position: relative;
-  top: -144px;
-  left:0;
-  display: flex;
-  flex-direction: column;
-  padding: 0px;
-}
-.listItem:hover .itemInfo .icons {
-  display: flex;
-  margin-bottom: 10px;
-  margin-left: 5px;
-}
-.listItem:hover .itemInfo .icons .icon {
-  border: 2px solid white;
-  padding: 5px;
-  border-radius: 50%;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.itemInfoTop {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-left: 5px;
-
-  color: rgba(255, 255, 255, 0.836);
-}
-.itemInfoTop .limit {
-  border: 1px solid rgba(255, 255, 255, 0.836);
-  padding: 1px 3px;
-  margin: 0 10px;
-}
-
- .desc {
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
- .genre {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.836);
-  text-align: start;
-  margin-left: 5px;
-
-}
 .delete{
   display: none;
   background-color: transparent;
@@ -126,3 +36,42 @@
   margin-right: 10px;
   top: -110px;
 }
+
+@media only screen and (max-width: 425px) {
+  .MovieBox {
+    width: 250px;
+    height: 180px;
+    margin-left: 20px;
+  }
+
+.upcome .title{
+  font-size: 1rem;
+  margin-left: 50px;
+}
+
+.MovieBox .text{
+  top: 0px;
+}
+
+.MovieBox:hover {
+  left: -20px;
+  width: 260px;
+  height: 180px;
+}
+
+.MovieBox:hover .text {
+  top: -20px;
+}
+.MovieBox:hover .delete {
+  top: -225px;
+    left: 193px;
+}
+.MovieBox:hover .fav {
+  top: -165px;
+    left: 10px;
+}
+.MovieBox:hover .iconfav {
+  top: -165px;
+    left: 10px;
+}
+} 

@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
+import { useNavigate } from "react-router-dom";
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -22,7 +24,7 @@ import img2 from '../../assets/STRIMIX.png'
 import axios from 'axios';
 import { useDispatch  , useSelector} from 'react-redux';
 import AuthenticationSliceActions from '../../Redux/AuthenticationSlice';
-
+    
 
 const pages = ['Home', 'Movies', 'My List' , "Watched"];
 const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out'];
@@ -88,6 +90,8 @@ const Navbar = () => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const isLoggedIn =useSelector((state)=>state.IsLogged)
     const Dispatch = useDispatch()
+    let navigate = useNavigate();
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -104,13 +108,28 @@ const Navbar = () => {
     };
     const handleChange=  (e) =>{
         let q = e.target.value
-        setTimeout(async ()=>{
-            const res = await axios.post(`http://localhost:3001/movie/search` , {q})
-            console.log(res.data);
-            Dispatch(AuthenticationSliceActions.AddMovie(res.data))
-//   
-//     })
-        },1000)
+        if(q==""){
+            console.log("here");
+            window.location.assign("/Home")
+        }else{
+
+            navigate(`/Search/${q}`);       
+        }
+        
+//         setTimeout(async ()=>{
+//             try{
+
+//                 const res = await axios.post(`http://localhost:3001/movie/search` , {q})
+//                 console.log(res.data);
+//                 Dispatch(AuthenticationSliceActions.AddMovie(res.data))
+//             }catch(err){
+//                 console.log(err);
+//             }
+// //   
+// //     })
+        
+
+//         },1000)
     }
 
     const token =localStorage.getItem('token')
@@ -170,7 +189,7 @@ const Navbar = () => {
                                 horizontal: 'left',
                             }}
                             open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+                            onClose={handleCloseUserMenu}
                             sx={{
                                 display: { xs: 'block', md: 'none' },
                             }}
@@ -184,25 +203,7 @@ const Navbar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+                                
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Link to={`${page}`} key={page}>
@@ -236,6 +237,7 @@ const Navbar = () => {
                         </Tooltip>
                         <Menu
                             sx={{ mt: '45px' }}
+                            
                             id="menu-appbar"
                             anchorEl={anchorElUser}
                             anchorOrigin={{
@@ -252,8 +254,8 @@ const Navbar = () => {
                         >
                             {/* const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out']; */}
                                 <Link to="">
-                                <MenuItem  onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Profiles</Typography>
+                                <MenuItem  onClick={handleCloseUserMenu} >
+                                    <Typography textAlign="center" >Profiles</Typography>
                                 </MenuItem>
                                 </Link>
                                 <Link to="">
