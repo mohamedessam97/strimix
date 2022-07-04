@@ -36,7 +36,7 @@ ul {
   margin:auto;
 }
 
-button{
+/* button{
   background: #e50813;
   outline: none;
   border: none;
@@ -44,7 +44,7 @@ button{
   padding: 12px 40px;
   font-weight: 500;
   font-size: 17px;
-}
+} */
 
 .row {
   width: 50%;
@@ -162,7 +162,7 @@ p{
   text-overflow: ellipsis;
 }
 
-.MovieBox button {
+/* .MovieBox button {
   display: none;
   margin-top: 15px;
   padding: 12px 20px;
@@ -178,10 +178,10 @@ p{
   display: inline-block;
   margin-right: 10px;
   top: -40px;
-}
-.MovieBox button i{
+} */
+/* .MovieBox button i{
   margin-right: 10px;
-}
+} */
 
 .upcome{
   position: relative;

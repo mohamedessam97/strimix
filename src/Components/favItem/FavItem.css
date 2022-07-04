@@ -4,37 +4,41 @@
   background-color: transparent;
   border: 0;
   position: relative;
-    top: -200px;
-    left: 280px;
+  top: -190px;
+  left: 335px;
     cursor: pointer;
 }
 
 .MovieBox:hover .delete{
-  background-color: transparent;
-  border: 0;
   display: block;
-  position: relative;
-  top: -215px;
-  left: 335px;
+  
 
 }
 
-.MovieBox button {
+.MovieBox button.fav{
   display: none;
   margin-top: 15px;
   padding: 12px 20px;
+  outline: none;
+  border: none;
   font-size: 13px;
   cursor: pointer;
   position: relative;
   top: -70px;
   left: 20px;
-  background-color: rgb(18,198,178);
+  color: white;
 }
 
-.MovieBox:hover button{
+
+
+
+.MovieBox:hover button.fav{
   display: inline-block;
+
+}
+
+.MovieBox button.fav i{
   margin-right: 10px;
-  top: -110px;
 }
 
 @media only screen and (max-width: 425px) {

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Alert from '@mui/material/Alert';
 import './Item.css'
 
 const Item = ( props ) => {
@@ -12,6 +13,8 @@ const Item = ( props ) => {
     const token = localStorage.getItem('token');
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setmovie] = useState(null);
+  const [show , setShow] =useState(false)
+
   const {item } =props
   useEffect(() => {
       setmovie(props.item[0])
@@ -23,7 +26,11 @@ const Item = ( props ) => {
             authorization:JSON.parse(token)
         }
     })
-    console.log(res)
+    setShow(true);
+        setTimeout(()=>{
+        setShow(false);
+            
+        },5000)
   }  
 
   const handleDelete =async (id)=>{
@@ -32,7 +39,6 @@ const Item = ( props ) => {
             authorization:JSON.parse(token)
         }
     })
-    console.log(res);
     setmovie(null)
   }
   const handleWatch = async (id)=>{
@@ -75,9 +81,13 @@ const Item = ( props ) => {
                     </Link>
                     <button
                     className='icon'
+                    style={{backgroundColor:"rgb(18,198,178)" , }}
                     onClick={()=>handleClick(movie._id)}
                     ><FavoriteBorderIcon size="large"/></button>
             </div>}
+            {/* {show && <Alert variant="filled" severity="success" sx={{width:'180px' , position:'relative',top:'-200px' , left:'90px'}}>
+                Added to your list
+            </Alert>} */}
         </>
     )
 }

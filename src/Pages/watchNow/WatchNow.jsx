@@ -20,11 +20,10 @@ const WatchList = () => {
         fetchData();
     }, []);
     const delet =false
-    console.log(movies);
     return (
         <div>
             <Container maxWidth="xl" sx={{ mt: "150px" ,  mb:"200px" }}>
-                {movies && <Grid container spacing={0}>
+                {movies.length !== 0 && <Grid container spacing={0}>
                     {movies.map(movie => {
                         return (
                             <Grid item xs={3} sx={{ mb: "20px" }}>
@@ -33,6 +32,11 @@ const WatchList = () => {
                         )
                     })}
                 </Grid>}
+                {movies.length === 0 && <div style={{
+                        color: "white",
+                        fontSize: "30px",
+                        margin: "216px 441px"
+                }}>There is no Watched Movies</div>}
             </Container>
         </div>
     );

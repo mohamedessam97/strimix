@@ -14,13 +14,14 @@ const MyList = () => {
                     authorization:JSON.parse(token)
                 }
             })
-            // console.log(res.data.Fav);
             setMovies(res.data.Fav)
         }
         fetchData();
     }, []);
     const delet=true
-    // console.log(movies);
+    const filter =()=>{
+
+    }
     return (
         <div>
             <Container maxWidth="xl" sx={{ mt: "150px" , mb:"200px"}}>
@@ -28,7 +29,7 @@ const MyList = () => {
                     {movies.map(movie => {
                         return (
                             <Grid item xs={12} sm={6} md={4} lg={3} sx={{ mb: "20px" }}>
-                                <FavItem key={movie._id} item={[movie , delet]}  />
+                                <FavItem key={movie._id} item={[movie , delet]} setMovies={setMovies} movies={movies} />
                             </Grid>
                         )
                     })}

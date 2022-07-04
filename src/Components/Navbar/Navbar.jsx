@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
+// import { makeStyles } from '@mui/styles';
 import InputBase from '@mui/material/InputBase';
 import useScrollTrigger from "@mui/material/useScrollTrigger"
 import {Link} from "react-router-dom"
@@ -24,6 +25,7 @@ import img2 from '../../assets/STRIMIX.png'
 import axios from 'axios';
 import { useDispatch  , useSelector} from 'react-redux';
 import AuthenticationSliceActions from '../../Redux/AuthenticationSlice';
+import './Navbar.css'
     
 
 const pages = ['Home', 'Movies', 'My List' , "Watched"];
@@ -44,6 +46,7 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
+
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -52,6 +55,13 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+}));
+const Menu2 = styled(Menu)(({ theme }) => ({
+    
+    "& .MuiList-root" : {
+        backgroundColor: "#0A0D18",
+
+    }
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -71,6 +81,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+
+// const useStyles = makeStyles((theme) => ({
+//     menuPaper: {
+//       backgroundColor: "lightblue"
+//     }
+//   }));
 
 
 function AppBarS({children}){
@@ -142,6 +158,7 @@ const Navbar = () => {
         } )
         Dispatch(AuthenticationSliceActions.logOut())
       }
+    //   const classes = useStyles();
     return (
         <AppBarS position="fixed"  >
             <Container maxWidth="xl">
@@ -176,7 +193,7 @@ const Navbar = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Menu
+                        <Menu2
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
@@ -201,7 +218,7 @@ const Navbar = () => {
                                     </Link>
                                 </MenuItem>
                             ))}
-                        </Menu>
+                        </Menu2>
                     </Box>
                                 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -235,9 +252,8 @@ const Navbar = () => {
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
-                        <Menu
+                        <Menu2
                             sx={{ mt: '45px' }}
-                            
                             id="menu-appbar"
                             anchorEl={anchorElUser}
                             anchorOrigin={{
@@ -255,31 +271,31 @@ const Navbar = () => {
                             {/* const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out']; */}
                                 <Link to="">
                                 <MenuItem  onClick={handleCloseUserMenu} >
-                                    <Typography textAlign="center" >Profiles</Typography>
+                                    <Typography textAlign="center" color={'white'}>Profiles</Typography>
                                 </MenuItem>
                                 </Link>
                                 <Link to="">
                                 <MenuItem  onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Manage Profiles</Typography>
+                                    <Typography textAlign="center" color={'white'}>Manage Profiles</Typography>
                                 </MenuItem>
                                 </Link>
                                 <Link to="">
                                 <MenuItem  onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Exit Profile</Typography>
+                                    <Typography textAlign="center" color={'white'}>Exit Profile</Typography>
                                 </MenuItem>
                                 </Link>
                                 <Link to="/account" onClick={handleCloseUserMenu}>
                                 <MenuItem >
-                                    <Typography textAlign="center">Account</Typography>
+                                    <Typography textAlign="center" color={'white'}>Account</Typography>
                                 </MenuItem>
                                 </Link>
                                 <Link to="" onClick={logOutHandler}>
                                 <MenuItem  onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center" >Sign out</Typography>
+                                    <Typography textAlign="center" color={'white'}>Sign out</Typography>
                                 </MenuItem>
                                 </Link>
                             
-                        </Menu>
+                        </Menu2>
                     </Box>
                 </Toolbar>
             </Container>
