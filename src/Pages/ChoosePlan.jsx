@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { choosePlan } from "../Redux/middleware/UserDataActions";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import bg from '../assets/2022.png';
 
 // const StyledLargeButton = styled(Button)(({ theme }) => ({
 //     color: "#fff",
@@ -66,6 +67,7 @@ const ChoosePlan = () => {
   };
 
   return (
+    <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
     <Container
       maxWidth="md"
       sx={{
@@ -178,6 +180,7 @@ const ChoosePlan = () => {
         </Stack>
       </Box>
     </Container>
+    </Box>
   );
 };
 

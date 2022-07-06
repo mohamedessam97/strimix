@@ -1,21 +1,4 @@
-
-.delete{
-  display: none;
-  background-color: transparent;
-  border: 0;
-  position: relative;
-  top: -190px;
-  left: 335px;
-    cursor: pointer;
-}
-
-.MovieBox:hover .delete{
-  display: block;
-  
-
-}
-
-.MovieBox button.fav{
+.MovieBox button.item , .icon{
   display: none;
   margin-top: 15px;
   padding: 12px 20px;
@@ -24,23 +7,26 @@
   font-size: 13px;
   cursor: pointer;
   position: relative;
-  top: -70px;
+  top: -40px;
   left: 20px;
   color: white;
+}
+.icon{
+  padding: 10px 20px;
+  margin-left: 10px;
+
 }
 
 
 
-
-.MovieBox:hover button.fav{
+.MovieBox:hover button.item ,.MovieBox:hover .icon{
   display: inline-block;
 
 }
 
-.MovieBox button.fav i{
+.MovieBox button.item i{
   margin-right: 10px;
 }
-
 @media only screen and (max-width: 425px) {
   .MovieBox {
     width: 250px;
@@ -68,14 +54,12 @@
 }
 .MovieBox:hover .delete {
   top: -225px;
-    left: 193px;
+  left: 276px;
 }
-.MovieBox:hover .fav {
-  top: -165px;
-    left: 10px;
+.MovieBox:hover .item {
+  top: -100px;
 }
-.MovieBox:hover .iconfav {
-  top: -165px;
-    left: 10px;
+.MovieBox:hover .icon {
+  top: -100px;
 }
 } 

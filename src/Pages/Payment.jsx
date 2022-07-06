@@ -1,10 +1,14 @@
 import { Box, Container } from "@mui/system";
 import { Stack, Typography } from "@mui/material";
 // import LargeButton from "../Components/UI/LargeButton";
-import LinkButton from "../Components/UI/LinkButton";
+import PaymentButton from "../Components/UI/PaymentButton";
 import imgageLink from '../assets/Group.png';
+import LinkButton from "../Components/UI/LinkButton";
+import bg from '../assets/2022.png';
 const Payment = () => {
     return (
+      <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
+
         <Container
         maxWidth="sm"
         sx={{ height: "80vh", boxSizing: "border-box", paddingTop: "5rem" , color:"#FFFFFF" ,  backgroundImage:'linear-gradient(to bottom, rgba(7, 9, 17, 0.9) 4.88%, rgba(7, 9, 17, 0.6) 34.09%, rgba(7, 9, 17, 0.5) 99.57%)' ,   paddingBottom:'1rem',
@@ -28,11 +32,14 @@ const Payment = () => {
 
             <Box sx={{marginTop:'2rem'}}>
             {/* <LargeButton link='/' text='Next'  /> */}
+            <PaymentButton />
             <LinkButton />
             </Box>
             
+
       </Stack>
     </Container>
+    </Box>
     );
 };
 

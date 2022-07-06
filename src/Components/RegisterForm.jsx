@@ -9,6 +9,7 @@ import { UserRegisterHandler } from "../Redux/middleware/UserDataActions";
 import AuthenticationSliceActions from "../Redux/AuthenticationSlice";
 import LoadingButton from '@mui/lab/LoadingButton';
 
+
 import "./Styles/style.css";
 
 // const LargeButton = styled(Button)(({ theme }) => ({
@@ -75,10 +76,10 @@ const RegisterForm = ({ classes }) => {
         
       );
     }else {
-    formik.errors.Email = 'required'
-    formik.errors.Password = 'required'
-    formik.touched.Email = true;
-    formik.touched.Password = true;
+    // formik.errors.Email = 'required'
+    // formik.errors.Password = 'required'
+    // formik.touched.Email = true;
+    // formik.touched.Password = true;
     
     Dispatch(AuthenticationSliceActions.setError('please Fill the form first')) }
   };
@@ -104,7 +105,7 @@ const RegisterForm = ({ classes }) => {
     if (!values.Password) {
       errors.Password = "Required";
       setPasswordIsValid(false);
-    } else if (values.Password.length <= 6) {
+    } else if (values.Password.length <= 5) {
       console.log(values.Password.length)
       errors.Password = "minium password is 6 digits";
       setPasswordIsValid(false);
@@ -197,7 +198,7 @@ const RegisterForm = ({ classes }) => {
   
 
       {requestError  && (
-        <Typography component="p" color='#f50057' sx={{color:'white'}}>{requestError}</Typography>
+        <Typography component="p" color='#f50057' >{requestError}</Typography>
       )}
     </Box>
   );

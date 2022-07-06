@@ -514,6 +514,7 @@ function Account() {
                   <img
                     src={user.avatar}
                     style={{ width: "50px", marginRight: "10px" }}
+
                   />
 
                   <span>{user.userName ? user.userName : "user"}</span>

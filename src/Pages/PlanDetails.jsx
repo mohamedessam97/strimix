@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 import LargeButton from "../Components/UI/LargeButton";
 import imglink from "../assets/Group.png";
 import CheckIcon from '@mui/icons-material/Check';
-
+import bg from '../assets/2022.png';
 
 
 const ImageContainer = styled(Box)(({ theme }) => ({
@@ -30,6 +30,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
 
 const PlanDetails = () => {
     return (
+      <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
         <Container
         maxWidth='xs'
         sx={{ height: "90vh", boxSizing: "border-box", paddingTop: "5rem" , backgroundColor:'rgba(7, 9, 17, 0.7)', marginBottom:'3rem'  }}
@@ -67,6 +68,7 @@ const PlanDetails = () => {
           <LargeButton link="/Chooseplan" text="Next" />
         </Stack>
       </Container>
+      </Box>
   
     );
 };

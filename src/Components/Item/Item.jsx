@@ -4,15 +4,17 @@ import { useState  , useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import './ListItem.css'
+import Alert from '@mui/material/Alert';
+import './Item.css'
 
 const Item = ( props ) => {
     const delet = props.item[1]
     const token = localStorage.getItem('token');
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setmovie] = useState(null);
+  const [show , setShow] =useState(false)
+
   const {item } =props
   useEffect(() => {
       setmovie(props.item[0])
@@ -24,7 +26,11 @@ const Item = ( props ) => {
             authorization:JSON.parse(token)
         }
     })
-    console.log(res)
+    setShow(true);
+        setTimeout(()=>{
+        setShow(false);
+            
+        },5000)
   }  
 
   const handleDelete =async (id)=>{
@@ -33,9 +39,7 @@ const Item = ( props ) => {
             authorization:JSON.parse(token)
         }
     })
-    console.log(res);
     setmovie(null)
-    // movie.filter((item) => item._id !== id)   
   }
   const handleWatch = async (id)=>{
     const res = await axios.put("http://localhost:3001/user/watched", {watched:id} , {
@@ -71,14 +75,19 @@ const Item = ( props ) => {
 
                     </button>}
                     <Link to={`/watch/${movie._id}`}>
-                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
+                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)} className="item">
                             <i className="fa fa-play"></i> PLAY NOW
                         </button>
                     </Link>
                     <button
+                    className='icon'
+                    style={{backgroundColor:"rgb(18,198,178)" , }}
                     onClick={()=>handleClick(movie._id)}
                     ><FavoriteBorderIcon size="large"/></button>
             </div>}
+            {/* {show && <Alert variant="filled" severity="success" sx={{width:'180px' , position:'relative',top:'-200px' , left:'90px'}}>
+                Added to your list
+            </Alert>} */}
         </>
     )
 }

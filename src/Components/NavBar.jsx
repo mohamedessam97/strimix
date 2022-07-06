@@ -29,7 +29,7 @@ const NavBar = () => {
     <Box
       variant="header"
       sx={{
-        height: "5rem",
+        height: "4rem",
         marginLeft: "auto",
         marginRight: "auto",
         background: "transparent",
@@ -41,7 +41,8 @@ const NavBar = () => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        sx={{ height: "100%" }}
+        
+        sx={{ height: "100%"  }}
       >
         <Box variant="div" sx={{ width: "100%", height: "100%" }}>
           <Stack
@@ -52,7 +53,7 @@ const NavBar = () => {
               width: "100%",
               fontWeight: "bold",
               height: "100%",
-              paddingLeft: "3rem",
+              paddingLeft: { lg:'3rem' , md:'3rem' , xs:'0px'},
               color: "red",
             }}
           >
@@ -93,7 +94,7 @@ const NavBar = () => {
             alignItems="center"
             sx={{
               height: "100%",
-              paddingRight: "3rem",
+              paddingRight:  { lg:'3rem' , md:'3rem' , xs:'0px'},
               textDecoration: "none !important",
             }}
           >

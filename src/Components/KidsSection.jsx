@@ -9,7 +9,7 @@ import cover from '../assets/2.png';
 
 const KidsSection = () => {
     return (
-        <Box  sx={{ color:'white' ,  height:'100vh' , width:'100%' }}>
+        <Box  sx={{ color:'white' ,  height:{xl:'100vh' , lg:'100vh' , md:'100vh' , sm:'auto' , xs:'auto'} , width:'100%' }}>
             {/* main Stack container */}
 
             <Stack direction='row'  justifyContent='space-evenly' alignItems='center' sx={{width:'100%' , height:'100%'}} flexWrap='wrap'>
@@ -35,7 +35,7 @@ const KidsSection = () => {
                 {/* images box container */}
                 <Box sx={{width:'100%'}}>
                     {/*  images Stack*/}
-                    <Stack sx={{width:'100%' , height:"100%"}} direction='row' justifyContent='flex-start' alignItems='center' gap={4} >
+                    <Stack sx={{width:'100%' , height:"100%"}} direction='row' justifyContent='flex-start' flexWrap='wrap' alignItems='center' gap={4} >
                         <Box sx={{backgroundImage:`url(${cover})` , width:'115px' , height:'200px' , backgroundRepeat:'no-repeat' , backgroundSize:'contain'}}></Box>
                         <Box sx={{backgroundImage:`url(${pixlar})` , width:'115px' , height:'200px' , backgroundRepeat:'no-repeat' , backgroundSize:'contain'}}></Box>
                         <Box sx={{backgroundImage:`url(${moana})` , width:'115px' , height:'200px' , backgroundRepeat:'no-repeat' , backgroundSize:'contain'}}></Box>

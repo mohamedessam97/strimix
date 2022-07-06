@@ -3,11 +3,11 @@ import RandomMovie from '../../Components/randomMovie/RandomMovie';
 import List from '../../Components/List/List';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-// import ListItem from '../../Components/ListItem/ListItem'
 import Item from '../../Components/Item/Item';
 import './Home.css'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import Loader from "../../Components/Loader";
 
 const HomeA = () => {
     const Movies = useSelector((state) => state.movies)
@@ -28,7 +28,8 @@ const HomeA = () => {
     const delet =false
     return (
         <div className="home">
-         {!Movies.length?<>
+            {!random && <Loader sx={{mt:"50px"}}/>}
+         
         <div className="random">
             {random && <RandomMovie movie={random} />}
             
@@ -39,20 +40,7 @@ const HomeA = () => {
                     )
                 }))
             }
-            </>:(<div>
-            <Container maxWidth="xl" sx={{ mt: "150px" }}>
-                {Movies && <Grid container spacing={0}>
-                    {Movies.map(movie => {
-                        const delet =false
-                        return (
-                            <Grid item xs={3} sx={{ mb: "20px" ,zIndex: 'tooltip'}} >
-                                <Item key={movie._id} item={[movie , delet]} />
-                            </Grid>
-                        )
-                    })}
-                </Grid>}
-            </Container>
-            </div>)}   
+            
         </div>
     );
 }

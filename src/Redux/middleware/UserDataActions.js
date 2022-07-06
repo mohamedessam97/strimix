@@ -1,7 +1,8 @@
 import axios from 'axios';
 import  AuthenticationSliceActions  from '../AuthenticationSlice';
 
-let token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : ''
+let token = localStorage.getItem('token') !== 'undefined' ? JSON.parse(localStorage.getItem('token')) : ''
+console.log( token)
 
 let config = {
     headers:{
@@ -12,6 +13,7 @@ let config = {
 
 
 export const UserRegisterHandler = (userData) => {
+
   
     return  (Dispatch) => {
         Dispatch(AuthenticationSliceActions.setError(''))
@@ -28,21 +30,19 @@ export const UserRegisterHandler = (userData) => {
         }).catch((err) => {
             console.log(err)
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
-            Dispatch(AuthenticationSliceActions.setError( 'Something went wrong' )) })
-    }
+            Dispatch(AuthenticationSliceActions.setError(err.response.data.message? err.response.data.message : 'Something went wrong' )) })
+     }
 }
 
 export const choosePlan = (userData) => {
 
 
 
-    
-
-    return async (Dispatch) => {
+    return  (Dispatch) => {
         Dispatch(AuthenticationSliceActions.setError(''))
         Dispatch(AuthenticationSliceActions.setIsLoading(true))
        let plan =  userData
-        await axios.put('http://localhost:3001/user/Plan', plan , config)
+         axios.put('http://localhost:3001/user/Plan', plan , config)
         .then( () =>  { 
         Dispatch(AuthenticationSliceActions.setError(''))
         Dispatch(AuthenticationSliceActions.setIsLoading(false))
@@ -59,24 +59,22 @@ export const choosePlan = (userData) => {
 
 export const UserLoginHandler = ({userName , Password , Navigate} ) => {
 
-    return async (Dispatch) => {
+
+    return  (Dispatch) => {
         Dispatch(AuthenticationSliceActions.setError(''))
         Dispatch(AuthenticationSliceActions.setIsLoading(true))
-        await axios.post('http://localhost:3001/user/login/',{email: userName , password: Password} )
+         axios.post('http://localhost:3001/user/login/',{email: userName , password: Password} )
         .then((response) =>{
-            console.log(response);
+            Dispatch(AuthenticationSliceActions.setError(''))
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
             Dispatch(AuthenticationSliceActions.logIn({token: response.data}))
             console.log(response.data);
             localStorage.setItem('token' , JSON.stringify(response.data.token))
             localStorage.setItem('user' , JSON.stringify(response.data.user))
             Navigate('/')
-        })
-        
-        .catch((error) => {
-            console.log( error.response.data)
+        }).catch((error) => {
             Dispatch(AuthenticationSliceActions.setPlanError(true))    
-            Dispatch(AuthenticationSliceActions.setError( error.response.data?  error.response.data :  'Something went wrong'))
+            Dispatch(AuthenticationSliceActions.setError( error.response.data.message?  error.response.data.message :  'Something went wrong'))
             Dispatch(AuthenticationSliceActions.setIsLoading(false))})
         
     }
@@ -87,7 +85,7 @@ export const creditCardHandler = (userData) => {
     
 
 
-    return async (Dispatch) => {
+    return  (Dispatch) => {
 
         Dispatch(AuthenticationSliceActions.setError(''))
         Dispatch(AuthenticationSliceActions.setIsLoading(true))
@@ -98,8 +96,9 @@ export const creditCardHandler = (userData) => {
         securityCode:userData.cvv ,
         PhoneNumber: userData.phoneNumber}
 
-        await axios.put('http://localhost:3001/user/payment' ,data , config)
+         axios.put('http://localhost:3001/user/payment' ,data , config)
         .then( () => { 
+            Dispatch(AuthenticationSliceActions.setError(''))
             localStorage.setItem("userdata", JSON.stringify(data))
             Dispatch(AuthenticationSliceActions.SetUserData({FirstName: userData.FirstName , LastName: userData.LastName , CardNumber: userData.CardNumber , phoneNumber: userData.phoneNumber  }))
             Dispatch(AuthenticationSliceActions.setIsLoading(false))
@@ -113,21 +112,37 @@ export const creditCardHandler = (userData) => {
 
 export const setUserDevice = (userDevice) => {
 
+
+  console.log('test')
+
     const Navigate = userDevice.Navigate
     const data =  userDevice.device 
-    return async (Dispatch) => {
+    return  (Dispatch) => {
         Dispatch(AuthenticationSliceActions.setIsLoading(true))
         Dispatch(AuthenticationSliceActions.setError(''))
-        await axios.put('http://localhost:3001/user/device' , {device:data} , config)
+        Dispatch(AuthenticationSliceActions.setUserDeviceError(''))
+         axios.put('http://localhost:3001/user/device' , {device:data} , config)
         .then((res) => {
+        Dispatch(AuthenticationSliceActions.setError(''))
         Dispatch(AuthenticationSliceActions.setUserDevice(data))
         Dispatch(AuthenticationSliceActions.setIsLoading(false))
-        Navigate('/Home')
-        Navigate('/Home')
+        Navigate('/Home') 
+        Dispatch(AuthenticationSliceActions.setUserDeviceError(''));
         }).catch((error) => {
          Dispatch(AuthenticationSliceActions.setIsLoading(false));
-         Dispatch(AuthenticationSliceActions.setError( error.response.data.message?  error.response.data.message :  'Something went wrong'));
+         console.log(error.data.message)
+         console.log(error.response.data.message)
+         console.log(error.data.message)
+         Dispatch(AuthenticationSliceActions.setUserDeviceError( error.response.data.message?  error.response.data.message :  'Something went wrong'));
         })
+    }
+}
+
+
+export const logOutHandler = (Navigate) => {
+    return (Dispatch) => {
+        Dispatch(AuthenticationSliceActions.logOut())
+        Navigate('/home')
     }
 }
 // export const CreateProfile= (userData) => {

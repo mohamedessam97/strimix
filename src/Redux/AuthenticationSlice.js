@@ -1,23 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  IsloggedIn: false,
-  Email: "",
-  Password: "",
-  token: "",
-  FirstName: "",
-  LastName: "",
-  CardNumber: "",
-  phoneNumber: "",
-  userPlan: "",
-  planChosen: false,
-  error: "",
-  isLoading: false,
-  planRequestError: false,
-  userDevice: "",
-  movies: [],
-};
-let storageData = JSON.parse(`${localStorage.getItem("userdata")}`);
+const initialState = { IsloggedIn: false, Email: localStorage.getItem('initialEmail') !== 'undifined' ? localStorage.getItem('initialEmail') : "", Password: "", token: "" , FirstName:"" , LastName:"" , CardNumber:"" , phoneNumber:'' , userPlan: '' , planChosen: false , error : '' , isLoading :false , planRequestError : false , userDevice : '' , movies:[] , userDeviceError:'', isCompleted:false};
 
 export const AuthenticationSlice = createSlice({
   name: "authentication",
@@ -70,17 +53,28 @@ export const AuthenticationSlice = createSlice({
         state.planChosen = true;
       }
     },
-    setError: (state, { payload }) => {
-      state.error = payload;
+
+    setUserPlan: (state , {payload}) => {
+      if(payload) {
+        state.userPlan = payload
+        state.planChosen = true
+       
+      }},
+    setError : (state , {payload}) => {
+        state.error = payload;
+      },
+    setIsLoading: (state , {payload}) => {
+        state.isLoading = payload
+      },
+    setPlanError : (state , {payload}) => {
+        state.planRequestError = payload
+      },
+    setUserDevice : (state , {payload}) => {
+      state.userDevice = payload
+      state.isCompleted = true
     },
-    setIsLoading: (state, { payload }) => {
-      state.isLoading = payload;
-    },
-    setPlanError: (state, { payload }) => {
-      state.planRequestError = payload;
-    },
-    setUserDevice: (state, { payload }) => {
-      state.userDevice = payload;
+    setUserDeviceError: (state , {payload}) => {
+      state.userDeviceError = payload
     },
     AddMovie: (state, { payload }) => {
       if (payload) {

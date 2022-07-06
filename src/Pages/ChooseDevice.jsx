@@ -13,6 +13,9 @@ import AuthenticationSliceActions from "../Redux/AuthenticationSlice";
 import LoadingButton from "@mui/lab/LoadingButton";
 import styled from "@emotion/styled";
 
+import bg from '../assets/2022.png';
+
+
 const LargeButton = styled(LoadingButton)(({ theme }) => ({
   color: "#fff",
   backgroundColor: "#12C6B2",
@@ -29,14 +32,15 @@ const LargeButton = styled(LoadingButton)(({ theme }) => ({
 }));
 
 const ChooseDevice = () => {
-  const [tvchosen, settvChosen] = useState(false);
-  const [mobilechosen, setMobileChosen] = useState(false);
-  const [laptopchosen, setlaptopChosen] = useState(false);
-  const Dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.isLoading);
-  const requestError = useSelector((state) => state.error);
-  const userDevice = useSelector((state) => state.userDevice);
-  const Navigate = useNavigate();
+
+  const [tvchosen , settvChosen] = useState(false)
+  const [mobilechosen , setMobileChosen] = useState(false)
+  const [laptopchosen , setlaptopChosen] = useState(false)
+  const  Dispatch = useDispatch()
+  const isLoading = useSelector( (state) => state.isLoading )
+  const requestError = useSelector( (state) => state.userDeviceError )
+  const userDevice = useSelector( (state) => state.userDevice )
+const Navigate = useNavigate()
   const tvDeviceHandler = () => {
     Dispatch(AuthenticationSliceActions.setUserDevice("Tv"));
     settvChosen(true);
@@ -71,6 +75,8 @@ const ChooseDevice = () => {
   };
 
   return (
+    <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
+
     <Container
       maxWidth="lg"
       sx={{
@@ -310,6 +316,7 @@ const ChooseDevice = () => {
         )}
       </Stack>
     </Container>
+    </Box>
   );
 };
 

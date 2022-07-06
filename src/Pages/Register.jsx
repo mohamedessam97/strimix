@@ -1,9 +1,11 @@
 import React from 'react';
-import { Container , Stack, Typography } from '@mui/material';
+import { Box, Container , Stack, Typography } from '@mui/material';
 import RegisterForm from '../Components/RegisterForm';
-
+import bg from '../assets/2022.png';
 const Register = () => {
     return (
+        <Box sx={{ backgroundImage:`url(${bg})` , backgroundSize:'cover' , paddingTop:'3rem' ,  paddingBottom:'3rem'}}>
+
         <Container
         maxWidth="sm"
         sx={{ height: "80vh", boxSizing: "border-box", paddingTop: "5rem" , textAlign:'left' ,  backgroundColor:'rgba(7, 9, 17, 0.7)', marginBottom:'3rem'}}>
@@ -17,6 +19,7 @@ const Register = () => {
             </Stack>
            
         </Container>
+        </Box>
     );
 };
 

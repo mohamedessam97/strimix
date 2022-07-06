@@ -3,11 +3,9 @@ import axios from "axios"
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Item from '../../Components/Item/Item'
-import { useSelector } from 'react-redux';
 
 import './movies.css'
 const Movies = () => {
-    const Movies = useSelector((state) => state.movies)
 
     const [movies, setMovies] = useState(null)
     const [data, setData] = useState([])
@@ -17,22 +15,11 @@ const Movies = () => {
             const res = await axios.get("http://localhost:3001/movie/all")
             setData(res.data)
             setMovies(res.data)
-            // console.log(res.data);
         }
         fetchData();
-    }, []);
+    }, [data]);
 
-    useEffect(()=>{
-        if(!Movies.length)
-        {
-            console.log("here");        
-            console.log(data);
-            setMovies(data)
-            console.log(movies);
 
-        }
-        setMovies(Movies)
-    },[Movies])
 
     const handleChange =(e)=>{
         setGenre(e.target.value)
@@ -50,7 +37,7 @@ const Movies = () => {
     const delet =false
     return (
         <div>
-            <Container maxWidth="xl" sx={{ mt: "150px" }}>
+            {data&&(<Container maxWidth="xl" sx={{ mt: "150px" }}>
                 <div className="category">
                     <span>Movies</span>
                     <select
@@ -68,16 +55,16 @@ const Movies = () => {
                     </select>
                 </div>
 
-                {movies && <Grid container spacing={0}>
+                { movies &&(<Grid container spacing={0} >
                     {movies.map(movie => {
                         return (
-                            <Grid item xs={3} sx={{ mb: "20px" }}>
+                            <Grid item xs={12} sm={6} md={4} lg={3}   sx={{ mb: "20px"  ,height:"250px" }}>
                                 <Item key={movie._id} item={[movie , delet]} />
                             </Grid>
                         )
                     })}
-                </Grid>}
-            </Container>
+                </Grid>)}
+            </Container>)}
         </div>
     );
 }

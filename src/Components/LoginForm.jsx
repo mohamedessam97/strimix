@@ -2,7 +2,7 @@ import { Box,  TextField , Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useState  } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { UserLoginHandler } from "../Redux/middleware/UserDataActions";
@@ -10,6 +10,7 @@ import AuthenticationSliceActions from "../Redux/AuthenticationSlice";
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import "./Styles/style.css";
+import { useEffect } from "react";
 
 // const LargeButton = styled(Button)(({ theme }) => ({
 //   color: "#fff",
@@ -60,15 +61,22 @@ const LoginForm = () => {
   const Navigate = useNavigate()
   const isLoading = useSelector((state) => state.isLoading );
   const requestError = useSelector((state) => state.error);
+  console.log(requestError , 'component888')
+  // useEffect(() => {
+  //   Dispatch(AuthenticationSliceActions.setError(''))
+
+  // } , [])
+
   const submitonHandler = (event) => {
     event.preventDefault();
+
     if (FormIsValid) {
       Dispatch(UserLoginHandler({userName: formik.values.Email , Password: formik.values.Password , Navigate}));
     }else{
-      formik.errors.Email = 'required'
-      formik.errors.Password = 'required'
-      formik.touched.Email = true;
-      formik.touched.Password = true;
+      // formik.errors.Email = 'required'
+      // formik.errors.Password = 'required'
+      // formik.touched.Email = true;
+      // formik.touched.Password = true;
       
       Dispatch(AuthenticationSliceActions.setError('please Fill the form first'))
     }
@@ -176,7 +184,7 @@ const LoginForm = () => {
 
 
         {requestError  && (
-        <Typography component="p" textAlign='center' color='#f50057' sx={{color:'white' , width:'100%'}}>{requestError}</Typography>
+        <Typography component="p" textAlign='center' color='#f50057' sx={{ width:'100%'}}>{requestError}</Typography>
       )}
 
     </Box>
