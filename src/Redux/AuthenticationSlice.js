@@ -39,13 +39,13 @@ export const AuthenticationSlice = createSlice({
       localStorage.setItem("token", "");
       localStorage.clear();
 
-      localStorage.setItem(
-        "userdata",
-        JSON.stringify({
-          ...storageData,
-          PhoneNumber: " ",
-        })
-      );
+      // localStorage.setItem(
+      //   "userdata",
+      //   JSON.stringify({
+      //     ...storageData,
+      //     PhoneNumber: " ",
+      //   })    
+      // );
     },
     setUserPlan: (state, { payload }) => {
       if (payload) {
