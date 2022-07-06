@@ -274,12 +274,13 @@ const Navbar = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {/* const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out']; */}
-                                <Link to="">
-                                <MenuItem  onClick={handleCloseUserMenu} >
-                                    <Typography textAlign="center" color={'white'}>Profiles</Typography>
+                                <Link to="/NewProfile">
+                                <MenuItem  onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">Profiles</Typography>
+
                                 </MenuItem>
                                 </Link>
-                                <Link to="">
+                                <Link to="/ManageProfile">
                                 <MenuItem  onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center" color={'white'}>Manage Profiles</Typography>
                                 </MenuItem>

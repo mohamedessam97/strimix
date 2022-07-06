@@ -33,10 +33,10 @@ const Payment = lazy(() => import("./Pages/Payment"));
 const CreditCard = lazy(() => import("./Pages/CreditCard"));
 const PlanDetails = lazy(() => import("./Pages/PlanDetails"));
 const Choosedevice = lazy(() => import("./Pages/ChooseDevice"));
-const NewProfile = lazy(() => import("./Pages/NewProfile"));
-const AddProfile = lazy(() => import("./Components/Users/AddProfile"));
-const EditProfile = lazy(() => import("./Components/Users/EditProfile"));
-const User = lazy(() => import("./Components/Users/User"));
+const NewProfile=lazy(()=>import('./Pages/Profiles/NewProfile'))
+const ManageProfile=lazy(()=>import('./Pages/Profiles/ManageProfile'))
+
+
 
 const App = () => {
   // const device =JSON.parse(localStorage.getItem("user")).device
@@ -107,9 +107,8 @@ const App = () => {
               <Route path="/choosedevice" element={<Choosedevice />} />
 
               <Route path="/NewProfile" element={<NewProfile />} />
-              <Route path="/users/add" element={<AddProfile />} />
-              <Route path="/users/edit/:id" element={<EditProfile />} />
-              <Route path="/users/:id" element={<User />} />
+              <Route path="/ManageProfile" element={<ManageProfile />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
