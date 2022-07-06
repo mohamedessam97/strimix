@@ -30,6 +30,14 @@ const ChangePassword = () => {
   const [confirmPass, setConfirmPass] = useState({
     password: "",
   });
+  let storageEmail = JSON.parse(
+    `${localStorage.getItem("Authentication")}`
+  ).email;
+  let storagePass = JSON.parse(
+    `${localStorage.getItem("Authentication")}`
+  ).password;
+  let storageData = JSON.parse(`${localStorage.getItem("userdata")}`);
+
   const [confChange, setConfChange] = useState(false);
   let regxNewPass = PWD_REGEX.test(newPass.password);
 
@@ -68,6 +76,7 @@ const ChangePassword = () => {
   // should use async await in case save new password in database
   const handleSubmitPass = async (e) => {
     e.preventDefault();
+    const token = JSON.parse(`${localStorage.getItem("token")}`);
     //axios.patch("http://localhost:3001/user/changepassword");
     const res = await axios.put(
       "http://localhost:3001/user/changepassword",
@@ -87,6 +96,14 @@ const ChangePassword = () => {
     let confirm = window.confirm("Are you sure to change password !?");
     setConfChange(true);
     if (confirm) {
+      localStorage.setItem(
+        "Authentication",
+        JSON.stringify({
+          ...storageData,
+          email: `${storageEmail}`,
+          password: `${storagePass}`,
+        })
+      );
       setTimeout(() => {
         setConfChange(false);
       }, 3000);
@@ -123,29 +140,29 @@ const ChangePassword = () => {
 
   const token = JSON.parse(`${localStorage.getItem("token")}`);
   const navigate = useNavigate();
-  useEffect(() => {
-    const token = JSON.parse(`${localStorage.getItem("token")}`);
-    console.log(token);
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
-    };
-    const getuser = async () => {
-      axios
-        .get("http://localhost:3001/user/getuser", config)
-        .then((response) => {
-          console.log(response.data);
-          dispatch({ type: "FetchSucceded", payload: response.data });
-        })
-        .catch((error) => {
-          console.log({ error });
-          dispatch({ type: "FetchFailed" });
-        });
-    };
-    getuser();
-  }, []);
+  // useEffect(() => {
+  //   const token = JSON.parse(`${localStorage.getItem("token")}`);
+  //   console.log(token);
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `${token}`,
+  //     },
+  //   };
+  //   const getuser = async () => {
+  //     axios
+  //       .get("http://localhost:3001/user/getuser", config)
+  //       .then((response) => {
+  //         // console.log(response.data);
+  //         // dispatch({ type: "FetchSucceded", payload: response.data });
+  //       })
+  //       .catch((error) => {
+  //         console.log({ error });
+  //         dispatch({ type: "FetchFailed" });
+  //       });
+  //   };
+  //   getuser();
+  // }, []);
 
   return (
     <form>

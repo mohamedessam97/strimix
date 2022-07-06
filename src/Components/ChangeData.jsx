@@ -22,15 +22,16 @@ import axios from "axios";
 const ChangeData = () => {
   const Email_REGEX =
     /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-  const Phone_REGEX = /^[0-9]\d{4}\d{3}\d{4}/;
-  let storageEmail = JSON.parse(
-    `${localStorage.getItem("Authentication")}`
-  ).email;
-  // let storagePhoneNumber = JSON.parse(
-  //   `${localStorage.getItem("userdata")}`
-  // ).phoneNumber;
-  const [newEmail, setNewEmail] = useState({ email: storageEmail });
-  const [newPhone, setNewPhone] = useState({ phone: storagePhoneNumber });
+  const Phone_REGEX = /^[0-9]\d{3}\d{3}\d{4}/;
+  // let storageEmail = JSON.parse(
+  //   `${localStorage.getItem("Authentication")}`
+  // ).email;
+  let storagePhoneNumber = JSON.parse(
+    `${localStorage.getItem("userdata")}`
+  ).phoneNumber;
+  let storageData = JSON.parse(`${localStorage.getItem("userdata")}`);
+  const [newEmail, setNewEmail] = useState({ email: "" });
+  const [newPhone, setNewPhone] = useState({ phone: "" });
   const [confChange, setConfChange] = useState(false);
 
   let regxNewEmail = Email_REGEX.test(newEmail.email);
@@ -40,7 +41,7 @@ const ChangeData = () => {
 
   const handleNewEmail = (e) => {
     const { name, value } = e.target;
-    setNewEmail({ ...newEmail, [name]: value });
+    setNewEmail((newEmail) => ({ ...newEmail, [name]: value }));
     console.log(newEmail);
   };
   const handleNewPhone = (e) => {
@@ -48,8 +49,8 @@ const ChangeData = () => {
     setNewPhone({ ...newPhone, [name]: value });
     console.log(newPhone);
   };
-  let pass = JSON.parse(`${localStorage.getItem("Authentication")}`).password;
-  console.log(pass);
+  let storageAuth = JSON.parse(`${localStorage.getItem("Authentication")}`);
+
   const handleSubmitData = async (e) => {
     e.preventDefault();
     // const config = {
@@ -78,8 +79,15 @@ const ChangeData = () => {
       localStorage.setItem(
         "Authentication",
         JSON.stringify({
+          ...storageAuth,
           email: `${newEmail.email}`,
-          password: `${pass}`,
+        })
+      );
+      localStorage.setItem(
+        "userdata",
+        JSON.stringify({
+          ...storageData,
+          PhoneNumber: `${newPhone.phone}`,
         })
       );
       setConfChange(true);
@@ -168,8 +176,11 @@ const ChangeData = () => {
           <OutlinedInput
             id="outlined-adornment-email"
             type="email"
+            placeholder={"Write a valid email"}
             // value={values.email}
             name="email"
+            required={false}
+            // value={storageEmail}
             onChange={handleNewEmail}
             sx={{
               width: { lg: "450px", md: "300px", sm: "auto", xs: "auto" },
@@ -182,9 +193,9 @@ const ChangeData = () => {
         <Alert
           sx={{
             visibility:
-              newEmail.email === "" || regxNewEmail === true
-                ? "hidden"
-                : "visiable",
+              newEmail.email === "" || regxNewEmail === false
+                ? "visiable"
+                : "hidden",
           }}
           severity="error"
         >
@@ -213,6 +224,7 @@ const ChangeData = () => {
             type="string"
             // value={values.email}
             name="phone"
+            placeholder={storagePhoneNumber}
             onChange={handleNewPhone}
             sx={{
               width: { lg: "450px", md: "300px", sm: "auto", xs: "auto" },
@@ -246,8 +258,7 @@ const ChangeData = () => {
           variant="contained"
           onClick={handleSubmitData}
           disabled={
-            newEmail === "" ||
-            newPhone === "" ||
+            (newEmail === "" && newPhone === "") ||
             regxNewEmail === false ||
             regxNewPhone === false
               ? true

@@ -23,7 +23,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import AuthenticationSliceActions from "../../Redux/AuthenticationSlice";
 
-const pages = ["Home", "Movies", "My List", "Watched", "UserAccount"];
+const pages = ["Home", "Movies", "My List", "Watched"];
 const settings = [
   "Profiles",
   "Manage Profiles",

@@ -17,7 +17,6 @@ const HomeA = lazy(() => import("./Pages/home/HomeA"));
 const Movies = lazy(() => import("./Pages/Movies/Movies"));
 const MyList = lazy(() => import("./Pages/myList/MyList"));
 const Account = lazy(() => import("./Pages/account/Account"));
-const MYaccount = lazy(() => import("./Pages/myAccount/Account"));
 const Watched = lazy(() => import("./Pages/watchNow/WatchNow"));
 const Watch = lazy(() => import("./Pages/movie/Movie"));
 const Login = lazy(() => import("./Pages/Login"));
@@ -120,10 +119,7 @@ const App = () => {
                 path="/account"
                 element={isLoggedIn ? <Account /> : <NotFound />}
               />
-              <Route
-                path="/UserAccount"
-                element={isLoggedIn ? <MYaccount /> : <NotFound />}
-              />
+
               {/* <Route path="/myAccount" element={<MYaccount />} /> */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

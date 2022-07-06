@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
   }
 `;
-
+let storageData = JSON.parse(`${localStorage.getItem("userdata")}`);
 const NavBar = () => {
   const IsloggedIn = useSelector((state) => state.IsloggedIn);
   const Dispatch = useDispatch();
