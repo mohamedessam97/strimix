@@ -36,7 +36,7 @@ ul {
   margin:auto;
 }
 
-button{
+/* button{
   background: #e50813;
   outline: none;
   border: none;
@@ -44,7 +44,7 @@ button{
   padding: 12px 40px;
   font-weight: 500;
   font-size: 17px;
-}
+} */
 
 .row {
   width: 50%;
@@ -162,7 +162,7 @@ p{
   text-overflow: ellipsis;
 }
 
-.MovieBox button {
+/* .MovieBox button {
   display: none;
   margin-top: 15px;
   padding: 12px 20px;
@@ -178,10 +178,10 @@ p{
   display: inline-block;
   margin-right: 10px;
   top: -40px;
-}
-.MovieBox button i{
+} */
+/* .MovieBox button i{
   margin-right: 10px;
-}
+} */
 
 .upcome{
   position: relative;
@@ -189,7 +189,54 @@ p{
 
 @media only screen and (max-width: 768px) {
   .MovieBox {
-    width: 320px;
-    height: 250px;
+    width: 290px;
+    height: 210px;
+    margin-left: 20px;
   }
-} 
+
+.upcome .title{
+  font-size: 1.6rem;
+  margin-left: 25px;
+}
+
+
+}
+ 
+/* @media only screen and (max-width: 425px) {
+  .MovieBox {
+    width: 250px;
+    height: 180px;
+    margin-left: 20px;
+  }
+
+.upcome .title{
+  font-size: 1rem;
+  margin-left: 50px;
+}
+
+.MovieBox .text{
+  top: 0px;
+}
+
+.MovieBox:hover {
+  left: -20px;
+  width: 340px;
+  height: 180px;
+}
+
+.MovieBox:hover .text {
+  top: -20px;
+}
+.MovieBox:hover .delete {
+  top: -225px;
+  left: 276px;
+}
+.MovieBox:hover button {
+  top: -167px;
+}
+}  */
+/* @media only screen and (max-width: 320px) {
+  
+  
+  
+}  */

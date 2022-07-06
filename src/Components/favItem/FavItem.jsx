@@ -4,11 +4,11 @@ import { useState  , useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './FavItem.css'
 
 const FavItem = ( props ) => {
+    const {movies,setMovies}=props
     const delet = props.item[1]
     const token = localStorage.getItem('token');
   const [isHovered, setIsHovered] = useState(false);
@@ -33,9 +33,8 @@ const FavItem = ( props ) => {
             authorization:JSON.parse(token)
         }
     })
-    console.log(res);
-    setmovie(null)
-    // movie.filter((item) => item._id !== id)   
+    const m =movies.filter(m=>m._id!==id)
+    setMovies(m);
   }
   const handleWatch = async (id)=>{
     const res = await axios.put("http://localhost:3001/user/watched", {watched:id} , {
@@ -60,24 +59,19 @@ const FavItem = ( props ) => {
                         <span style={{marginLeft:"40px"}}>{`(${movie.year})`}</span>
                         <br/>
                     </div>
-                     <button 
+                     {delet && <button 
                     className='delete' 
                     onClick={()=>handleDelete(movie._id)}
                     >
-                   
                     <DeleteIcon  
-                    
                     sx={{ color: 'red' ,fontSize: 30 }}/>
-
-                    </button>
+                    </button>}
                     <Link to={`/watch/${movie._id}`}>
-                        <button style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
+                        <button className="fav" style={{backgroundColor:"rgb(18,198,178)" , }} onClick={()=>handleWatch(movie._id)}>
                             <i className="fa fa-play"></i> PLAY NOW
                         </button>
                     </Link>
-                    <button
-                    onClick={()=>handleClick(movie._id)}
-                    ><FavoriteBorderIcon size="large"/></button>
+                    
             </div>}
         </>
     )

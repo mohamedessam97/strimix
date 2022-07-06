@@ -152,7 +152,7 @@ const RegisterForm = ({ classes }) => {
           width: { lg: "450px", md: "300px", sm: "auto", xs: "auto" },
           color: "white",
           "&::placeholder": {
-            color: "white",
+            color: "white"
           },
         }}
         onChange={formik.handleChange}

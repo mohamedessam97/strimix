@@ -14,25 +14,32 @@ const MyList = () => {
                     authorization:JSON.parse(token)
                 }
             })
-            console.log(res.data.Fav);
             setMovies(res.data.Fav)
         }
         fetchData();
     }, []);
     const delet=true
-    console.log(movies);
+    const filter =()=>{
+
+    }
     return (
         <div>
-            <Container maxWidth="xl" sx={{ mt: "150px" }}>
-                {movies && <Grid container spacing={0}>
+            <Container maxWidth="xl" sx={{ mt: "150px" , mb:"200px"}}>
+                {movies.length !==0 && <Grid container spacing={0}>
                     {movies.map(movie => {
                         return (
-                            <Grid item xs={3} sx={{ mb: "20px" }}>
-                                <FavItem key={movie._id} item={[movie , delet]}  />
+                            <Grid item xs={12} sm={6} md={4} lg={3} sx={{ mb: "20px" }}>
+                                <FavItem key={movie._id} item={[movie , delet]} setMovies={setMovies} movies={movies} />
                             </Grid>
                         )
                     })}
                 </Grid>}
+                {movies.length === 0 && <div style={{
+                        color: "white",
+                        fontSize: "30px",
+                        margin: "216px 514px"
+                }}>There is no Movies</div>}
+                
             </Container>
         </div>
     );

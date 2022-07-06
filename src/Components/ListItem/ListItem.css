@@ -108,3 +108,66 @@
     left: 350px;
 
 }
+.MovieBox button.play1 , .favbtn{
+  display: none;
+  margin-top: 15px;
+  padding: 12px 20px;
+  outline: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  top: -40px;
+  left: 20px;
+  color: white;
+}
+.favbtn{
+  padding: 10px 20px;
+  margin-left: 10px;
+
+}
+
+
+
+.MovieBox:hover button.play1 ,.MovieBox:hover .favbtn{
+  display: inline-block;
+
+}
+
+.MovieBox button.play1 i{
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 425px) {
+  .MovieBox {
+    width: 250px;
+    height: 180px;
+    margin-left: 20px;
+  }
+
+.upcome .title{
+  font-size: 1rem;
+  margin-left: 50px;
+}
+
+.MovieBox .text{
+  top: 0px;
+}
+
+.MovieBox:hover {
+  left: -20px;
+  width: 340px;
+  height: 180px;
+}
+
+.MovieBox:hover .text {
+  top: -20px;
+}
+.MovieBox:hover .delete {
+  top: -225px;
+  left: 276px;
+}
+.MovieBox:hover .listItem {
+  top: -100px;
+}
+} 

@@ -1,6 +1,30 @@
-.home {
-    background-color: black;
-}
+
 .random{
 height: 550px;
 }
+
+@media only screen and (max-width: 768px) {
+
+.random{
+    height: 450px;
+}
+
+
+  } 
+@media only screen and (max-width: 425px) {
+
+
+.home{
+    width: 475px;
+}
+.random{
+  height: 230px;
+}
+  } 
+@media only screen and (max-width: 320px) {
+
+
+.home{
+    width: 450px;
+}
+  } 
