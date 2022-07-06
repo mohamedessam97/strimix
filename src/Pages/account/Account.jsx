@@ -45,7 +45,7 @@ function Account() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log(state);
   let storagePhoneNumber = JSON.parse(
-    `${localStorage.getItem("userdata")}`
+    `${localStorage.getItem("user")}`
   ).PhoneNumber;
   // console.log(JSON.parse(localStorage.getItem("userdata")).PhoneNumber);
   // let storageEmail = JSON.parse(

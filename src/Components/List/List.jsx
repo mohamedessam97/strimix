@@ -10,7 +10,7 @@ const SmapleNextArrow = (props) => {
     return (
         <div className="control-btn" onClick={onClick}>
             <button className='next'>
-                <i className='fas fa-chevron-right'></i>
+                <i className='fas fa-chevron-right' style={{color:"white"}}></i>
             </button>
         </div>
     )
@@ -21,7 +21,7 @@ const SmaplePrevArrow = (props) => {
     return (
         <div className="control-btn" onClick={onClick}>
             <button className='prev'>
-                <i className='fas fa-chevron-left'></i>
+                <i className='fas fa-chevron-left' style={{color:"white"}}></i>
             </button>
         </div>
     )

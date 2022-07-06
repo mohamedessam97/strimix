@@ -20,14 +20,14 @@ import { styled, alpha } from '@mui/material/styles';
 // import { makeStyles } from '@mui/styles';
 import InputBase from '@mui/material/InputBase';
 import useScrollTrigger from "@mui/material/useScrollTrigger"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import img1 from '../../assets/Polygon 1.png'
 import img2 from '../../assets/STRIMIX.png'
 import axios from 'axios';
-import { useDispatch  , useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AuthenticationSliceActions from '../../Redux/AuthenticationSlice';
 import './Navbar.css'
-    
+
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -47,20 +47,20 @@ const Search = styled("div")(({ theme }) => ({
 
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }));
 const Menu2 = styled(Menu)(({ theme }) => ({
-    
-    "& .MuiList-root" : {
-        backgroundColor: "#0A0D18",
 
-    }
+  "& .MuiList-root": {
+    backgroundColor: "#0A0D18",
+
+  }
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -84,51 +84,51 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-function AppBarS({children}){
-    const trigger =useScrollTrigger();
-    
-    return (
-            <AppBar sx={{
-                backgroundColor: trigger? "#0A0D18":'transparent'
-            }}>
-                {children}
-            </AppBar>
-    )
+function AppBarS({ children }) {
+  const trigger = useScrollTrigger();
+
+  return (
+    <AppBar sx={{
+      backgroundColor: trigger ? "#0A0D18" : 'transparent'
+    }}>
+      {children}
+    </AppBar>
+  )
 }
 
 const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const isLoggedIn =useSelector((state)=>state.IsLogged)
-    const Dispatch = useDispatch()
-    let navigate = useNavigate();
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const isLoggedIn = useSelector((state) => state.IsLogged)
+  const Dispatch = useDispatch()
+  let navigate = useNavigate();
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-    const handleChange=  (e) =>{
-        let q = e.target.value
-        if(q==""){
-            console.log("here");
-            window.location.assign("/Home")
-        }else{
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const handleChange = (e) => {
+    let q = e.target.value
+    if (q == "") {
+      console.log("here");
+      window.location.assign("/Home")
+    } else {
 
-            navigate(`/Search/${q}`);       
-        }
-
+      navigate(`/Search/${q}`);
     }
+
+  }
 
   const token = localStorage.getItem("token");
 
@@ -145,7 +145,7 @@ const Navbar = () => {
     Dispatch(AuthenticationSliceActions.logOut());
   };
 
-  const pages =["Home" , "Movies" , "My List" , "Watched"]
+  const pages = ["Home", "Movies", "My List", "Watched"]
   return (
     <AppBarS position="fixed">
       <Container maxWidth="xl">
@@ -257,7 +257,7 @@ const Navbar = () => {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
+            <Menu2
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -274,32 +274,28 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               {/* const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out']; */}
-              <Link to="">
+              <Link to="/NewProfile">
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profiles</Typography>
+                  <Typography textAlign="center" color={'white'}>Profiles</Typography>
+
                 </MenuItem>
               </Link>
-              <Link to="NewProfile">
+              <Link to="/ManageProfile">
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Manage Profiles</Typography>
-                </MenuItem>
-              </Link>
-              <Link to="">
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Exit Profile</Typography>
+                  <Typography textAlign="center" color={'white'}>Manage Profiles</Typography>
                 </MenuItem>
               </Link>
               <Link to="/account" onClick={handleCloseUserMenu}>
-                <MenuItem>
-                  <Typography textAlign="center">Account</Typography>
+                <MenuItem >
+                  <Typography textAlign="center" color={'white'}>Account</Typography>
                 </MenuItem>
               </Link>
               <Link to="" onClick={logOutHandler}>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Sign out</Typography>
+                  <Typography textAlign="center" color={'white'}>Sign out</Typography>
                 </MenuItem>
               </Link>
-            </Menu>
+            </Menu2>
           </Box>
         </Toolbar>
       </Container>
