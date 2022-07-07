@@ -17,12 +17,13 @@ const Movies = () => {
             setMovies(res.data)
         }
         fetchData();
-    }, [data]);
+    }, []);
 
 
 
     const handleChange =(e)=>{
         setGenre(e.target.value)
+        
     }
     useEffect(()=>{
         if(genr === 'All'){
@@ -31,8 +32,10 @@ const Movies = () => {
             const m =data.filter(d=>{
                 return d.genre.includes(genr)
             })
+            console.log(m);
             setMovies(m)
         }
+        console.log(movies);
     },[genr])
     const delet =false
     return (
@@ -55,7 +58,7 @@ const Movies = () => {
                     </select>
                 </div>
 
-                { movies &&(<Grid container spacing={0} >
+               {movies && (<Grid container spacing={0} >
                     {movies.map(movie => {
                         return (
                             <Grid item xs={12} sm={6} md={4} lg={3}   sx={{ mb: "20px"  ,height:"250px" }}>

@@ -27,9 +27,9 @@ const ChangeData = () => {
   //   `${localStorage.getItem("Authentication")}`
   // ).email;
   let storagePhoneNumber = JSON.parse(
-    `${localStorage.getItem("userdata")}`
-  ).phoneNumber;
-  let storageData = JSON.parse(`${localStorage.getItem("userdata")}`);
+    `${localStorage.getItem("user")}`
+  ).PhoneNumber;
+  let storageData = JSON.parse(`${localStorage.getItem("user")}`);
   const [newEmail, setNewEmail] = useState({ email: "" });
   const [newPhone, setNewPhone] = useState({ phone: "" });
   const [confChange, setConfChange] = useState(false);
@@ -80,14 +80,14 @@ const ChangeData = () => {
         "Authentication",
         JSON.stringify({
           ...storageAuth,
-          email: `${newEmail.email}`,
+          email: `${newEmail}`,
         })
       );
       localStorage.setItem(
         "userdata",
         JSON.stringify({
           ...storageData,
-          PhoneNumber: `${newPhone.phone}`,
+          PhoneNumber: `${newPhone}`,
         })
       );
       setConfChange(true);

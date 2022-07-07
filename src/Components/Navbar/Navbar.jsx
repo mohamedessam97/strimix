@@ -111,12 +111,12 @@ const Navbar = () => {
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav(false);
   };
 
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(false);
   };
   const handleChange = (e) => {
     let q = e.target.value
@@ -270,7 +270,7 @@ const Navbar = () => {
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={Boolean(anchorElUser)}
+              open={anchorElUser}
               onClose={handleCloseUserMenu}
             >
               {/* const settings = ['Profiles', 'Manage Profiles', 'Exit Profile', 'Account', 'Sign out']; */}
