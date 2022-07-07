@@ -76,9 +76,9 @@ const ListItem = (props) => {
                     onClick={() => handleClick(movie._id)}
                 ><FavoriteBorderIcon size="large" /></button>
             </div>}
-            {/* {show && <Alert variant="filled" severity="success" sx={{width:'180px' , position:'relative',top:'-200px' , left:'90px'}}>
+            {show && <Alert variant="filled" severity="success" sx={{width:'180px' , position:'relative',top:'-200px' , left:'90px'}}>
                 Added to your list
-            </Alert>} */}
+            </Alert>}
         </>
     )
 }
